@@ -1,7 +1,6 @@
 cards = document.getElementById('cards');
 const arrayOfCards = [];
-const image2 = document.createElement('img');
-image2.src = 'https://i.pinimg.com/originals/e6/14/70/e61470cdba3f919bbefcbb4fc9b96a57.png'
+
 
 const fetchCard = () => {
     fetch("https://omgvamp-hearthstone-v1.p.rapidapi.com/cardbacks?locale=ruRU", {
@@ -20,7 +19,7 @@ const fetchCard = () => {
         })
         .then((data) => {
 
-            for (let i = 0; i < data.length; i++) {
+            for (let i = 0; i < 53; i++) {
 
                 arrayOfCards.push(deckBack = {
                     name: data[i].name,
@@ -45,7 +44,7 @@ const displayCards = (arrayOfCards) => {
     const cardString = arrayOfCards.map((card) =>
 
         `<li class='card'>
-       <img class='card-image' src="${card.image}" onError="this.src='https://d15f34w2p8l1cc.cloudfront.net/hearthstone/d835067892840acd343eac4626e339e6555d38c71aee7ee6ee77a5ce588fd438.png'"/>
+       <img class='card-image' src="${card.image}" onError="this.src='./images/onError.png'"/>
     </li>
    `
     ).join('')
