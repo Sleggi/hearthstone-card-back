@@ -62,12 +62,14 @@ const moreInfo = (id) => {
         const cardStringInfo =
 
             `       
-           <button onclick='deleted()'>Close</button>
+            <div class='modal-content'>
+            <div class='button' onclick='deleted()'>✕</div>
            <img class='card-image-info' src="${arrayOfCards[id].image}" onError="this.src='./images/onError.png'"/>
            <div class='right-side'>
                <h1>${arrayOfCards[id].name}</h1>
-               <p>${arrayOfCards[id].description}</p>
-               <p>${arrayOfCards[id].howToGet}</p>
+               <p class='desc'>${arrayOfCards[id].description}</p>
+               <p class='howto'>${arrayOfCards[id].howToGet}</p>
+           </div>
            </div>
         
        `
@@ -77,12 +79,14 @@ const moreInfo = (id) => {
     } else {
         const cardString0 =
             `       
-        <button onclick='deleted()'>Close</button>
+            <div class='modal-content'>
+        <div class='button' onclick='deleted()'>✕</div>
         <img class='card-image-info' src="${arrayOfCards[id].image}" onError="this.src='./images/onError.png'"/>
         <div class='right-side'>
             <h1>${arrayOfCards[id].name}</h1>
-            <p>${arrayOfCards[id].description}</p>
-            <p>Стандартная рубашка</p>
+            <p class='desc'>${arrayOfCards[id].description}</p>
+            <p class='howto'>Стандартная рубашка</p>
+        </div>
         </div>
      
     `
