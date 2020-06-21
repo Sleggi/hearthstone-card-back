@@ -28,7 +28,7 @@ const fetchCard = () => {
                     description: data[i].description,
                     howToGet: data[i].howToGet,
                     image: data[i].imgAnimated,
-                    id: i + 1
+                    id: i
 
 
                 })
@@ -58,48 +58,49 @@ const displayCards = (arrayOfCards) => {
 
 
 const moreInfo = (id) => {
+    if (id !== 0) {
+        const cardStringInfo =
 
-    const cardStringInfo = arrayOfCards.map((info) =>
-        `       
-           <button onclick='showModal()'>Close</button>
-           <img class='card-image-info' src="${info.image}" onError="this.src='./images/onError.png'"/>
+            `       
+           <button onclick='deleted()'>Close</button>
+           <img class='card-image-info' src="${arrayOfCards[id].image}" onError="this.src='./images/onError.png'"/>
            <div class='right-side'>
-               <h1>${info.name}</h1>
-               <p>${info.description}</p>
-               <p>${info.howToGet}</p>
+               <h1>${arrayOfCards[id].name}</h1>
+               <p>${arrayOfCards[id].description}</p>
+               <p>${arrayOfCards[id].howToGet}</p>
            </div>
         
-       `).join('')
-    modal.innerHTML = cardStringInfo;
+       `
 
+        modal.innerHTML = cardStringInfo;
 
+    } else {
+        const cardString0 =
+            `       
+        <button onclick='deleted()'>Close</button>
+        <img class='card-image-info' src="${arrayOfCards[id].image}" onError="this.src='./images/onError.png'"/>
+        <div class='right-side'>
+            <h1>${arrayOfCards[id].name}</h1>
+            <p>${arrayOfCards[id].description}</p>
+            <p>Стандартная рубашка</p>
+        </div>
+     
+    `
+        modal.innerHTML = cardString0
+    }
 
 }
 
 const showModal = (id) => {
     moreInfo(id)
-    modal.classList.toggle('show-modal')
+    modal.classList.add('show-modal')
 
 }
 
+const deleted = () => {
+    modal.classList.remove('show-modal')
+}
 
 
-
-
-
-// const moreInfo = () => {
-//     const cardStringInfo = arrayOfCards.map((info) =>
-//         `       <div class='card-info'> 
-//            <button onclick='close'>Close</button>
-//            <img class='card-image-info' src="${info.image}" onError="this.src='./images/onError.png'"/>
-//            <div class='right-side'>
-//                <h1>${info.name}</h1>
-//                <p>${info.description}</p>
-//                <p>${info.howToGet}</p>
-//            </div>
-//       </div>   
-//        `).join('')
-//     cards.innerHTML = cardStringInfo + cards.innerHTML
-// }
 
 fetchCard()
