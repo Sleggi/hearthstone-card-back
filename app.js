@@ -111,11 +111,13 @@ const deleted = () => {
 
 input.addEventListener('input', (event) => {
     let value = event.target.value
+
     if (value && value.trim().length > 0) {
-        value = value.trim().toUpperCase();
+        value = value.trim().toUpperCase()
+
 
         displayCards(arrayOfCards.filter(card => {
-            return card.name.includes(value)
+            return card.name.toUpperCase().includes(value)
         }));
     } else if (value.trim().length === 0) {
         displayCards(arrayOfCards)
