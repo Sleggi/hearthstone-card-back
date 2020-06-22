@@ -31,6 +31,7 @@ header h1 {
     filter: drop-shadow(rgb(0, 0, 0) 2px 2px 5px);
 }
 
+/* NAV BAR STYLING */
 
 .navigation::before {
     content: "";
@@ -59,6 +60,103 @@ header h1 {
     height: 60px;
 }
 
+/* NAV BAR SEARCH STYLING */
+
+
+.searchBarPosition {
+    position: absolute;
+    left: 50px;
+    top: 30px;
+    z-index: 1;
+}
+
+.search-bar {
+    height: 54px;
+    max-width: 300px;
+    margin-left: 34px;
+    position: relative;
+    background: url(./images/searchbarBackground.png) center center repeat-x;
+    padding: 6px 0px;
+}
+
+#searchInput {
+    background-color: rgba(0, 0, 0, 0);
+    font-family: "Belwe Bold";
+    color: rgb(255, 255, 255);
+    width: calc(100% - 35px);
+    margin-left: 10px;
+    border-width: 0px;
+    outline: none;
+
+}
+
+.search-bar::before {
+    content: '';
+    background: url(./images/searchLeft.png) center no-repeat;
+    position: absolute;
+    top: 0;
+    left: -30px;
+    width: 34px;
+    height: 54px;
+
+}
+
+.search-bar::after {
+    content: '';
+    background: url(./images/searchRight.png)center no-repeat;
+    position: absolute;
+    top: 0;
+    right: -30px;
+    width: 34px;
+    height: 54px;
+}
+
+.background {
+    background: url(./images/searchBacgroundGold.png)center center repeat-x;
+    height: 42px;
+    position: relative;
+    padding-left: 20px;
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+
+    margin-left: 2px;
+}
+
+.background i {
+    position: absolute;
+    left: 0px;
+    font-size: 18px;
+    color: gold;
+    cursor: pointer;
+}
+
+.background::before {
+    content: '';
+    background: url(./images/searchLeft-gold.png)center no-repeat;
+    position: absolute;
+    top: 0px;
+    left: -24px;
+    width: 24px;
+    height: 42px;
+    z-index: 1;
+}
+
+
+.background::after {
+    content: '';
+    background: url(./images/searchRight-gold.png) center no-repeat;
+    position: absolute;
+    top: 0px;
+    right: -22px;
+    width: 24px;
+    height: 42px;
+    z-index: 1;
+}
+
+/* CARDS DISPLAY GRID */
+
+
 #cards {
     margin-left: 10px;
     display: grid;
@@ -78,6 +176,8 @@ header h1 {
     width: 100%;
     cursor: pointer;
 }
+
+/* MODAL WINDOW STYLING */
 
 
 .modal {
