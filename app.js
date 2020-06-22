@@ -1,5 +1,6 @@
 let cards = document.getElementById('cards');
 let modal = document.querySelector('.modal');
+let input = document.getElementById('searchInput');
 
 const arrayOfCards = [];
 console.log(arrayOfCards)
@@ -67,8 +68,8 @@ const moreInfo = (id) => {
            <img class='card-image-info' src="${arrayOfCards[id].image}" onError="this.src='./images/onError.png'"/>
            <div class='right-side'>
                <h1>${arrayOfCards[id].name}</h1>
-               <p class='desc'>${arrayOfCards[id].description}</p>
-               <p class='howto'>${arrayOfCards[id].howToGet}</p>
+               <p class='desc'><span style='color:gold'>Описание:</span> ${arrayOfCards[id].description}</p>
+               <p class='howto'><span style='color:gold'>Как получить:</span> ${arrayOfCards[id].howToGet}</p>
            </div>
            </div>
         
@@ -84,7 +85,7 @@ const moreInfo = (id) => {
         <img class='card-image-info' src="${arrayOfCards[id].image}" onError="this.src='./images/onError.png'"/>
         <div class='right-side'>
             <h1>${arrayOfCards[id].name}</h1>
-            <p class='desc'>${arrayOfCards[id].description}</p>
+            <p class='desc'><span style='color:gold'>Описание:</span> ${arrayOfCards[id].description}</p>
             <p class='howto'>Стандартная рубашка</p>
         </div>
         </div>
@@ -104,6 +105,27 @@ const showModal = (id) => {
 const deleted = () => {
     modal.classList.remove('show-modal')
 }
+
+// SEARCH FUNCTIONS 
+
+
+input.addEventListener('input', (event) => {
+    let value = event.target.value
+    if (value && value.trim().length > 0) {
+        value = value.trim().toUpperCase();
+
+        displayCards(arrayOfCards.filter(card => {
+            return card.name.includes(value)
+        }));
+    } else if (value.trim().length === 0) {
+        displayCards(arrayOfCards)
+    }
+})
+
+
+
+
+
 
 
 
