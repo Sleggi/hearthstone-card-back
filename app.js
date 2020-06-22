@@ -1,6 +1,7 @@
 let cards = document.getElementById('cards');
 let modal = document.querySelector('.modal');
 let input = document.getElementById('searchInput');
+let clear = document.querySelector('.clearButton')
 
 const arrayOfCards = [];
 console.log(arrayOfCards)
@@ -109,17 +110,29 @@ const deleted = () => {
 // SEARCH FUNCTIONS 
 
 
+function clearInput() {
+    clear.classList.remove('clean')
+    input.value = '';
+    displayCards(arrayOfCards)
+}
+
+
 input.addEventListener('input', (event) => {
+
+
     let value = event.target.value
 
+
     if (value && value.trim().length > 0) {
+        clear.classList.add('clean')
         value = value.trim().toUpperCase()
 
 
         displayCards(arrayOfCards.filter(card => {
             return card.name.toUpperCase().includes(value)
         }));
-    } else if (value.trim().length === 0) {
+    } else if (value.trim().length === 0 && value === '') {
+
         displayCards(arrayOfCards)
     }
 })

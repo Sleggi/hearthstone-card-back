@@ -175,6 +175,22 @@ header p {
     z-index: 1;
 }
 
+.clearButton {
+    visibility: hidden;
+}
+
+
+.clean {
+    font-size: 22px;
+    color: red;
+    z-index: 100001;
+    pointer-events: all;
+    cursor: pointer;
+    margin-left: 5px;
+    visibility: visible;
+}
+
+
 /* CARDS DISPLAY GRID */
 
 
