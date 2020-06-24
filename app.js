@@ -1,7 +1,7 @@
 let cards = document.getElementById('cards');
 let modal = document.querySelector('.modal');
 let input = document.getElementById('searchInput');
-let clear = document.querySelector('.clearButton')
+let clear = document.querySelector('.clearButton');
 
 const arrayOfCards = [];
 console.log(arrayOfCards)
@@ -138,6 +138,53 @@ input.addEventListener('input', (event) => {
 })
 
 
+const registrationForm = () => {
+    let registationFileds = `
+    <div class='reg-form'>
+        <div class='close-reg-form' onclick='deleted()'>✕</div>
+        <div class='reg-header'>
+            <h1>Регистрация</h1>
+        </div>
+        <form class='form' id='form'>
+           <div class='form-control'>
+                <label>Имя пользователя</label>
+                <input type='text' id='username'>
+                <i class='fas fa-check-circle'></i>
+                <i class='fas fa-exclamation-circle'></i>
+                <small>Ошибка</small>
+           </div>
+
+            <div class='form-control'>
+                <label>Email</label>
+                <input type='email' id='email'>
+                <i class='fas fa-check-circle'></i>
+                <i class='fas fa-exclamation-circle'></i>
+                <small>Ошибка</small>
+           </div>
+
+            <div class='form-control'>
+                <label>Пароль</label>
+                <input type='password' id='password'>
+                <i class='fas fa-check-circle'></i>
+                <i class='fas fa-exclamation-circle'></i>
+                <small>Ошибка</small>
+           </div>
+
+            <div class='form-control'>
+                <label>Проверка пароля</label>
+                <input type='password' id='password2'>
+                <i class='fas fa-check-circle'></i>
+                <i class='fas fa-exclamation-circle'></i>
+                <small>Ошибка</small>
+           </div>
+
+           <button>Отправить</button>
+        </form>
+    </div>  
+    `
+    modal.classList.add('show-modal')
+    modal.innerHTML = registationFileds
+}
 
 
 

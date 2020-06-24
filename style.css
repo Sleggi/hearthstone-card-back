@@ -205,6 +205,33 @@ header p {
 }
 
 
+
+/* Create Account */
+
+#createAccount {
+    position: absolute;
+    left: 1150px;
+    top: 35px;
+    z-index: 1;
+    height: 42px;
+    width: 140px;
+    border-radius: 12px;
+    outline: none;
+    border: none;
+    background: url(./images/searchbarBackground.png) center center repeat-x;
+    font-size: 14px;
+    letter-spacing: 1px;
+    padding: 0 5px 0 5px;
+    color: gold;
+    cursor: pointer;
+    transition: scale .5s ease-in-out;
+    box-shadow: 1px 0px 6px 0px gold;
+}
+
+#createAccount:hover {
+    transform: scale(1.1);
+}
+
 /* CARDS DISPLAY GRID */
 
 
