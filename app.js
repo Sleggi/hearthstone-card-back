@@ -49,7 +49,7 @@ const displayCards = (arrayOfCards) => {
     const cardString = arrayOfCards.map((card) =>
 
         `<li class='card' onclick='showModal(${card.id})'>
-       <img class='card-image' src="${card.image}" onError="this.src='./images/onError.png'"/>
+       <img class='card-image' src="${card.image}" onerror="this.style='visibility: hidden'"/>
     </li>
    `
     ).join('')
@@ -66,7 +66,7 @@ const moreInfo = (id) => {
             `       
             <div class='modal-content'>
             <div class='button' onclick='deleted()'>✕</div>
-           <img class='card-image-info' src="${arrayOfCards[id].image}" onError="this.src='./images/onError.png'"/>
+           <img class='card-image-info' src="${arrayOfCards[id].image}" onerror="this.src='./images/onError.png'"/>
            <div class='right-side'>
                <h1>${arrayOfCards[id].name}</h1>
                <p class='desc'><span style='color:gold'>Описание:</span> ${arrayOfCards[id].description}</p>

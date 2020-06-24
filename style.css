@@ -19,7 +19,7 @@ body {
     width: 100vw;
     height: 100vh;
     overflow-x: hidden;
-
+    background: url(./images/main-background.jpg) center repeat;
 }
 
 header {
@@ -194,25 +194,42 @@ header p {
 /* CARDS DISPLAY GRID */
 
 
-#cards {
-    margin-left: 10px;
-    display: grid;
-    grid-gap: 30px;
-    grid-template-columns: repeat(auto-fill, 240px);
+.allcards {
+    width: 100%;
+    margin: auto;
+
 }
 
+
+
+#cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
 
 .card {
     width: 240px;
     height: 350px;
     margin-bottom: 20px;
+    transition: all 0.3s ease-in-out;
 
+
+}
+
+.card:hover {
+    filter: drop-shadow(0 0 1.5rem gold);
+    transform: scale(1.1);
 }
 
 .card img {
     width: 100%;
     cursor: pointer;
+
+
 }
+
+
 
 
 /* MODAL WINDOW STYLING */
@@ -235,6 +252,7 @@ header p {
 
 .show-modal {
     opacity: 1;
+    z-index: 10500;
     visibility: visible;
     transform: scale(1.0);
     transition: visibility 0s linear 0s, opacity 0.25s 0s, transform 0.25s;
@@ -296,4 +314,87 @@ header p {
     z-index: 100001;
     pointer-events: all;
     cursor: pointer;
+}
+
+
+@media (max-width: 900px) {
+    .card-image-info {
+        margin-left: 100px;
+        width: 265px;
+        height: 404px;
+    }
+}
+
+@media (max-width: 800px) {
+    .modal-content {
+        margin-top: 50px;
+    }
+
+    .right-side {
+        width: 350px;
+
+    }
+
+    .desc {
+        margin-bottom: 20px;
+    }
+
+}
+
+@media (max-width: 600px) {
+    .card-image-info {
+        margin-left: 10px;
+
+    }
+
+    .right-side {
+        width: 250px;
+    }
+}
+
+@media (max-width: 500px) {
+    .card-image-info {
+        visibility: hidden;
+    }
+
+    .modal-content {
+        margin-top: 0px;
+        display: flex;
+        flex-direction: column;
+        overflow-y: scroll;
+        position: relative;
+    }
+
+    .right-side {
+        width: 350px;
+        position: absolute;
+        top: 100px;
+        left: 100px;
+        padding: 10px 20px 20px;
+    }
+
+
+
+}
+
+@media (max-width:400px) {
+    .modal-content {
+        margin-top: 0px;
+        display: flex;
+        flex-direction: column;
+        overflow-y: scroll;
+        position: relative;
+    }
+
+    .right-side {
+        width: 280px;
+        position: absolute;
+        left: 50px;
+
+    }
+
+    .right-side h1 {
+        text-align: center;
+    }
+
 }
