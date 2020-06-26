@@ -3,8 +3,15 @@ let modal = document.querySelector('.modal');
 let input = document.getElementById('searchInput');
 let clear = document.querySelector('.clearButton');
 
+
+
+
+
+
+
+// Getting the cards Array from the API 
 const arrayOfCards = [];
-console.log(arrayOfCards)
+
 
 const fetchCard = () => {
     fetch("https://omgvamp-hearthstone-v1.p.rapidapi.com/cardbacks?locale=ruRU", {
@@ -23,7 +30,7 @@ const fetchCard = () => {
         })
         .then((data) => {
 
-            for (let i = 0; i < 53; i++) {
+            for (let i = 0; i < 51; i++) {
 
                 arrayOfCards.push(deckBack = {
                     name: data[i].name,
@@ -43,7 +50,7 @@ const fetchCard = () => {
 
 }
 
-
+// Displaying the arrayofcards on the screen
 
 const displayCards = (arrayOfCards) => {
     const cardString = arrayOfCards.map((card) =>
@@ -58,6 +65,7 @@ const displayCards = (arrayOfCards) => {
 
 }
 
+//Creating the moreInfo function for displaying more information in modal window onclick
 
 const moreInfo = (id) => {
     if (id !== 0) {
@@ -76,7 +84,7 @@ const moreInfo = (id) => {
         
        `
 
-        modal.innerHTML = cardStringInfo;
+        modal.innerHTML = cardStringInfo; // setting the modal window inner html to display more information
 
     } else {
         const cardString0 =
@@ -97,6 +105,7 @@ const moreInfo = (id) => {
 
 }
 
+// Functions for showing and removing modal info 
 const showModal = (id) => {
     moreInfo(id)
     modal.classList.add('show-modal')
@@ -109,7 +118,7 @@ const deleted = () => {
 
 // SEARCH FUNCTIONS 
 
-
+// clear the input onclick
 function clearInput() {
     clear.classList.remove('clean')
     input.value = '';
@@ -137,58 +146,98 @@ input.addEventListener('input', (event) => {
     }
 })
 
-
+// Making registration form appears like modal window 
 const registrationForm = () => {
-    let registationFileds = `
-    <div class='reg-form'>
-        <div class='close-reg-form' onclick='deleted()'>✕</div>
-        <div class='reg-header'>
-            <h1>Регистрация</h1>
-        </div>
-        <form class='form' id='form'>
-           <div class='form-control'>
-                <label>Имя пользователя</label>
-                <input type='text' id='username'>
-                <i class='fas fa-check-circle'></i>
-                <i class='fas fa-exclamation-circle'></i>
-                <small>Ошибка</small>
-           </div>
 
-            <div class='form-control'>
-                <label>Email</label>
-                <input type='email' id='email'>
-                <i class='fas fa-check-circle'></i>
-                <i class='fas fa-exclamation-circle'></i>
-                <small>Ошибка</small>
-           </div>
+    document.querySelector('.reg-modal').classList.add('reg-modal-visible')
+}
 
-            <div class='form-control'>
-                <label>Пароль</label>
-                <input type='password' id='password'>
-                <i class='fas fa-check-circle'></i>
-                <i class='fas fa-exclamation-circle'></i>
-                <small>Ошибка</small>
-           </div>
 
-            <div class='form-control'>
-                <label>Проверка пароля</label>
-                <input type='password' id='password2'>
-                <i class='fas fa-check-circle'></i>
-                <i class='fas fa-exclamation-circle'></i>
-                <small>Ошибка</small>
-           </div>
+// Making registration form be able to close
 
-           <button>Отправить</button>
-        </form>
-    </div>  
-    `
-    modal.classList.add('show-modal')
-    modal.innerHTML = registationFileds
+function regModalClose() {
+    document.querySelector('.reg-modal').classList.remove('reg-modal-visible')
+}
+
+
+//  Getting form elements
+let form = document.getElementById('form');
+let username = document.getElementById('username');
+let email = document.getElementById('email');
+let password = document.getElementById('password');
+let password2 = document.getElementById('password2');
+let submit = document.getElementById('submit')
+
+
+
+form.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    checkInputs();
+})
+
+function checkInputs() {
+    const usernameValue = username.value.trim();
+    const emailValue = email.value.trim();
+    const passwordValue = password.value.trim();
+    const password2Value = password2.value.trim();
+
+    if (usernameValue === '') {
+
+        setErrorFor(username, 'Имя пользовател не может быть пустым')
+    } else {
+
+        setSuccesFor(username);
+    }
+
+    if (emailValue === '') {
+        setErrorFor(email, 'Email не может быть пустым')
+
+    } else if (!isEmail(emailValue)) {
+        setErrorFor(email, 'Укажите существующий email')
+    } else {
+        setSuccesFor(email);
+    }
+
+    if (passwordValue === '') {
+        setErrorFor(password, 'Пороль не может быть пустым')
+    } else if (passwordValue.length < 6) {
+        setErrorFor(password, 'Пароль должен содержать не менее 6-ти символов')
+    } else {
+        setSuccesFor(password)
+    }
+
+    if (password2Value === '') {
+        setErrorFor(password2, 'Пароли не совпадают')
+    } else if (passwordValue !== password2Value) {
+        setErrorFor(password2, 'Пароли не совпадают')
+    } else {
+        setSuccesFor(password2)
+    }
+
+}
+
+
+function setErrorFor(input, message) {
+    const formControl = input.parentElement;
+    const small = formControl.querySelector('small');
+
+    // add error style
+    formControl.className = 'form-control error'
+    // add error message inside the small tag
+    small.innerText = message;
+}
+
+
+function setSuccesFor(input) {
+    const formControl = input.parentElement;
+    formControl.className = 'form-control success'
 }
 
 
 
-
-
+function isEmail(email) {
+    return /^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/.test(email)
+}
 
 fetchCard()
