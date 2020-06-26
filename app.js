@@ -184,7 +184,9 @@ function checkInputs() {
 
     if (usernameValue === '') {
 
-        setErrorFor(username, 'Имя пользовател не может быть пустым')
+        setErrorFor(username, 'Имя пользователя не может быть пустым')
+    } else if (!isUserName(usernameValue)) {
+        setErrorFor(username, 'Некорректное имя пользователя')
     } else {
 
         setSuccesFor(username);
@@ -238,6 +240,10 @@ function setSuccesFor(input) {
 
 function isEmail(email) {
     return /^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/.test(email)
+}
+
+function isUserName(username) {
+    return /^(?=.{4,16}$)(?![_.])(?!.*[_.]{2})[a-zA-Z0-9._]+(?<![_.])$/.test(username)
 }
 
 fetchCard()

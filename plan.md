@@ -5,8 +5,8 @@
 + 5. Style the view screen
 + 6. Add search functionality
 + 7. Complete styling 
-  8. Create registration form
-  9. Add validation
++ 8. Create registration form
++ 9. Add validation
   10. Style registration form
   11. Connect mongoDB
   12. Publish repository to github
